@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RatePanda</title>
+    <script>
+      // GitHub Pages SPA routing fix for /ratepanda-website/
+      // Store the full path and redirect to index.html
+      const path = window.location.pathname;
+      const basePath = '/ratepanda-website/';
+      
+      // Only redirect if we're not already at the base path and not accessing a file
+      if (path !== basePath && !path.includes('.')) {
+        // Store the path for the app to restore
+        sessionStorage.redirect = path;
+        // Redirect to index.html at the base path
+        window.location.href = basePath;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
