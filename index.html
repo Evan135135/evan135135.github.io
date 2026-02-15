@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RatePanda - Pricing Automation for Hotels</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,11 +12,20 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #22c55e;
+            --primary-dark: #16a34a;
+            --foreground: #1a1a1a;
+            --muted: #666666;
+            --border: #e5e5e5;
+            --background: #ffffff;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: white;
+            color: var(--foreground);
+            background: var(--background);
         }
 
         .container {
@@ -31,7 +41,7 @@
             z-index: 50;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 1px solid var(--border);
             padding: 1rem 0;
         }
 
@@ -59,13 +69,14 @@
         }
 
         nav a {
-            color: #1a1a1a;
+            color: var(--foreground);
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         nav a:hover {
-            color: #22c55e;
+            color: var(--primary);
         }
 
         .btn {
@@ -77,21 +88,23 @@
             transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
         }
 
         .btn-primary {
-            background: #22c55e;
+            background: var(--primary);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #16a34a;
+            background: var(--primary-dark);
         }
 
         .btn-outline {
             background: white;
-            color: #1a1a1a;
-            border: 1px solid #e5e5e5;
+            color: var(--foreground);
+            border: 1px solid var(--border);
         }
 
         .btn-outline:hover {
@@ -112,6 +125,10 @@
             }
         }
 
+        .hero-wrapper {
+            position: relative;
+        }
+
         .hero-content {
             position: relative;
             z-index: 10;
@@ -119,33 +136,41 @@
         }
 
         .hero h1 {
+            font-family: 'Sora', sans-serif;
             font-size: 3rem;
             font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
         @media (min-width: 768px) {
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 3.75rem;
             }
         }
 
         .hero h1 .highlight {
-            color: #22c55e;
+            color: var(--primary);
         }
 
         .hero p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .hero p.subtitle {
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .hero-buttons {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         @media (min-width: 640px) {
@@ -156,11 +181,12 @@
 
         .hero-image {
             position: absolute;
-            top: -100px;
-            right: 0;
-            width: 400px;
+            top: -120px;
+            right: -50px;
+            width: 450px;
             opacity: 0.6;
             display: none;
+            z-index: 1;
         }
 
         @media (min-width: 768px) {
@@ -176,10 +202,18 @@
         }
 
         .features h2 {
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (min-width: 768px) {
+            .features h2 {
+                font-size: 3rem;
+            }
         }
 
         .features-grid {
@@ -189,14 +223,16 @@
         }
 
         .feature-card {
-            padding: 2rem;
-            border: 1px solid #e5e5e5;
-            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
             transition: all 0.3s;
+            background: white;
         }
 
         .feature-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary);
         }
 
         .feature-card img {
@@ -207,15 +243,18 @@
         }
 
         .feature-card h3 {
+            font-family: 'Sora', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
             text-align: center;
+            letter-spacing: -0.01em;
         }
 
         .feature-card p {
-            color: #666;
+            color: var(--muted);
             text-align: center;
+            line-height: 1.7;
         }
 
         /* What RatePanda Is Section */
@@ -225,10 +264,18 @@
         }
 
         .what-is h2 {
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (min-width: 768px) {
+            .what-is h2 {
+                font-size: 3rem;
+            }
         }
 
         .what-is-grid {
@@ -238,10 +285,19 @@
         }
 
         .what-is-column h3 {
+            font-family: 'Sora', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: #22c55e;
+            letter-spacing: -0.01em;
+        }
+
+        .what-is-column h3.positive {
+            color: var(--primary);
+        }
+
+        .what-is-column h3.negative {
+            color: #ef4444;
         }
 
         .what-is-column ul {
@@ -252,13 +308,22 @@
             display: flex;
             gap: 1rem;
             margin-bottom: 1rem;
-            color: #666;
+            color: var(--muted);
+            line-height: 1.6;
         }
 
         .what-is-column li span:first-child {
-            color: #22c55e;
             font-weight: bold;
             flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .what-is-column li.positive span:first-child {
+            color: var(--primary);
+        }
+
+        .what-is-column li.negative span:first-child {
+            color: #ef4444;
         }
 
         /* How It Works Section */
@@ -268,10 +333,18 @@
         }
 
         .how-it-works h2 {
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (min-width: 768px) {
+            .how-it-works h2 {
+                font-size: 3rem;
+            }
         }
 
         .steps-grid {
@@ -288,24 +361,28 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: #22c55e;
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
             color: white;
             border-radius: 50%;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Sora', sans-serif;
         }
 
         .step h3 {
+            font-family: 'Sora', sans-serif;
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
         }
 
         .step p {
-            color: #666;
+            color: var(--muted);
+            line-height: 1.7;
         }
 
         /* FAQ Section */
@@ -315,19 +392,27 @@
         }
 
         .faq h2 {
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (min-width: 768px) {
+            .faq h2 {
+                font-size: 3rem;
+            }
         }
 
         .faq-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .faq-item {
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 1px solid var(--border);
             padding: 1.5rem 0;
         }
 
@@ -341,32 +426,48 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--foreground);
             background: none;
             border: none;
             width: 100%;
             text-align: left;
             padding: 0;
-            font-size: 1rem;
+            font-size: 1.05rem;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.3s;
         }
 
         .faq-question:hover {
-            color: #22c55e;
+            color: var(--primary);
         }
 
         .faq-answer {
             display: none;
             margin-top: 1rem;
-            color: #666;
+            color: var(--muted);
             line-height: 1.8;
+            font-size: 0.95rem;
         }
 
         .faq-answer.open {
             display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .faq-toggle {
             transition: transform 0.3s;
+            flex-shrink: 0;
         }
 
         .faq-toggle.open {
@@ -381,46 +482,61 @@
         }
 
         .cta h2 {
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (min-width: 768px) {
+            .cta h2 {
+                font-size: 3rem;
+            }
         }
 
         .cta p {
-            color: #666;
+            color: var(--muted);
             margin-bottom: 2rem;
             font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         /* Footer */
         footer {
-            background: #f5f5f5;
+            background: #f9f9f9;
             padding: 3rem 0;
-            border-top: 1px solid #e5e5e5;
+            border-top: 1px solid var(--border);
         }
 
         footer .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 2rem;
         }
 
         footer h4 {
-            font-size: 1rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            letter-spacing: -0.01em;
         }
 
         footer a {
             display: block;
-            color: #666;
+            color: var(--muted);
             text-decoration: none;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             transition: color 0.3s;
+            font-size: 0.9rem;
         }
 
         footer a:hover {
-            color: #22c55e;
+            color: var(--primary);
         }
     </style>
 </head>
@@ -428,7 +544,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2322c55e'/%3E%3Ccircle cx='35' cy='40' r='8' fill='white'/%3E%3Ccircle cx='65' cy='40' r='8' fill='white'/%3E%3Cpath d='M 40 60 Q 50 70 60 60' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E" alt="RatePanda">
+            <img src="/logo.png" alt="RatePanda">
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">Integration</a>
@@ -441,14 +557,19 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Make pricing<br><span class="highlight">boring</span></h1>
-                <p>Automatic pricing that keeps hotel rates sensible and up to date.</p>
-                <p style="font-size: 0.95rem; font-weight: 500;">Built to be bundled by hotel software platforms.</p>
-                <p>Give your customers sensible, automatic pricing — without building or maintaining a full revenue management system.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">Bundle pricing automation →</button>
-                    <button class="btn btn-outline">Try quick-start iframe</button>
+            <div class="hero-wrapper">
+                <div class="hero-image">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663274380395/nMRAWAXxtAyPdhXx.png" alt="RatePanda Mascot">
+                </div>
+                <div class="hero-content">
+                    <h1>Make pricing<br><span class="highlight">boring</span></h1>
+                    <p>Automatic pricing that keeps hotel rates sensible and up to date.</p>
+                    <p class="subtitle">Built to be bundled by hotel software platforms.</p>
+                    <p>Give your customers sensible, automatic pricing — without building or maintaining a full revenue management system.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary">Bundle pricing automation →</button>
+                        <button class="btn btn-outline">Try quick-start iframe</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -460,17 +581,17 @@
             <h2>Why PMS Providers Choose RatePanda</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">⚙️</div>
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663274380395/hkWJIZLUDIFfluYX.png" alt="Runs in the background">
                     <h3>Runs in the background</h3>
                     <p>No setup work. Pricing automation happens automatically without manual intervention or ongoing maintenance.</p>
                 </div>
                 <div class="feature-card">
-                    <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">🔌</div>
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663274380395/wIIUcyhdkcEXPCwu.png" alt="API-first, iframe-ready">
                     <h3>API-first, iframe-ready</h3>
                     <p>Build your own interface or use our ready-made iframes. Flexible integration from day one.</p>
                 </div>
                 <div class="feature-card">
-                    <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">💰</div>
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663274380395/AMZwbNEPDWvfjidB.png" alt="One flat pricing model">
                     <h3>One flat pricing model</h3>
                     <p>Simple, predictable costs. No revenue share, no per-booking charges, no hidden fees.</p>
                 </div>
@@ -484,23 +605,23 @@
             <h2>What RatePanda Is (and Isn't)</h2>
             <div class="what-is-grid">
                 <div class="what-is-column">
-                    <h3>What It Is</h3>
+                    <h3 class="positive">What It Is</h3>
                     <ul>
-                        <li><span>✓</span> <span>Pricing automation for everyday hotels</span></li>
-                        <li><span>✓</span> <span>Designed to be bundled by PMS platforms</span></li>
-                        <li><span>✓</span> <span>API-first, with optional quick-start iframes</span></li>
-                        <li><span>✓</span> <span>Opinionated and predictable by design</span></li>
-                        <li><span>✓</span> <span>Simple, flat pricing with no revenue share</span></li>
+                        <li class="positive"><span>✓</span> <span>Pricing automation for everyday hotels</span></li>
+                        <li class="positive"><span>✓</span> <span>Designed to be bundled by PMS platforms</span></li>
+                        <li class="positive"><span>✓</span> <span>API-first, with optional quick-start iframes</span></li>
+                        <li class="positive"><span>✓</span> <span>Opinionated and predictable by design</span></li>
+                        <li class="positive"><span>✓</span> <span>Simple, flat pricing with no revenue share</span></li>
                     </ul>
                 </div>
                 <div class="what-is-column">
-                    <h3 style="color: #ef4444;">What It Isn't</h3>
+                    <h3 class="negative">What It Isn't</h3>
                     <ul>
-                        <li><span style="color: #ef4444;">✗</span> <span>A full revenue management system (RMS)</span></li>
-                        <li><span style="color: #ef4444;">✗</span> <span>A replacement for your PMS</span></li>
-                        <li><span style="color: #ef4444;">✗</span> <span>A booking engine or reservation system</span></li>
-                        <li><span style="color: #ef4444;">✗</span> <span>Custom pricing logic per hotel</span></li>
-                        <li><span style="color: #ef4444;">✗</span> <span>A direct-to-hotel sales product</span></li>
+                        <li class="negative"><span>✗</span> <span>A full revenue management system (RMS)</span></li>
+                        <li class="negative"><span>✗</span> <span>A replacement for your PMS</span></li>
+                        <li class="negative"><span>✗</span> <span>A booking engine or reservation system</span></li>
+                        <li class="negative"><span>✗</span> <span>Custom pricing logic per hotel</span></li>
+                        <li class="negative"><span>✗</span> <span>A direct-to-hotel sales product</span></li>
                     </ul>
                 </div>
             </div>
@@ -644,7 +765,7 @@
         <div class="container">
             <h2>Ready to Add Pricing Automation to Your PMS?</h2>
             <p>Schedule a partnership demo to see how RatePanda can help your hotel customers succeed with intelligent pricing.</p>
-            <button class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Schedule a Partnership Demo</button>
+            <button class="btn btn-primary" style="font-size: 1.05rem; padding: 1rem 2rem;">Schedule a Partnership Demo</button>
         </div>
     </section>
 
